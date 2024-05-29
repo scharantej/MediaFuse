@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Multi-Platform Search Engine</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h1>Multi-Platform Search Engine</h1>
+<form action="/search" method="POST">
+<input type="text" name="query" placeholder="Search">
+<select name="platform">
+<option value="all">All platforms</option>
+<option value="reddit">Reddit</option>
+<option value="youtube">YouTube</option>
+<option value="tiktok">TikTok</option>
+<option value="instagram">Instagram</option>
+</select>
+<input type="submit" value="Search">
+</form>
+<div class="results">
+{% for platform, results in results.items() %}
+<h2>{{ platform }}</h2>
+<ul>
+{% for result in results %}
+<li>
+<a href="{{ result.url }}">{{ result.title }}</a>
+<p>{{ result.description }}</p>
+</li>
+{% endfor %}
+</ul>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>
+
